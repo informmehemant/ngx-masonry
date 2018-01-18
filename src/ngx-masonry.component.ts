@@ -12,12 +12,8 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 
 declare var require: any;
-declare var imagesLoaded: any;
-
-if (!(typeof process === 'object' && process + '' === '[object process]')) {
-	// is browser
-  var Masonry = require('masonry-layout');
-}
+var imagesLoaded: any = undefined;
+var masonryConstructor: any = undefined;
 
 import { NgxMasonryOptions } from './ngx-masonry-options.interface';
 
@@ -36,7 +32,6 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 		private _element: ElementRef) {}
 	
 	public _msnry: any;
-	private _imagesLoaded = null;
 
 	// Inputs
 	@Input() public options: NgxMasonryOptions;
@@ -47,10 +42,14 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 	@Output() removeComplete: EventEmitter<any[]> = new EventEmitter<any[]>();
 
 	ngOnInit() {
-		///TODO: How to load imagesloaded only if this.useImagesLoaded===true?
-		if (this.useImagesLoaded) {
-			this._imagesLoaded = require('imagesloaded');
-		}
+    		///TODO: How to load imagesloaded only if this.useImagesLoaded===true?
+    		if (this.useImagesLoaded && imagesLoaded === undefined) {
+      			imagesLoaded = require('imagesloaded');
+    		}
+
+		if (isPlatformBrowser(this.platformId) && masonryConstructor === undefined) {
+		      masonryConstructor = require('masonry-layout');
+	    	}
 
 		// Create masonry options object
 		if (!this.options) this.options = {};
@@ -62,7 +61,7 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 
 		if (isPlatformBrowser(this.platformId)) {			
 			// Initialize Masonry
-			this._msnry = new Masonry(this._element.nativeElement, this.options);
+			this._msnry = new masonryConstructor(this._element.nativeElement, this.options);
 
 			// console.log('AngularMasonry:', 'Initialized');
 
