@@ -63,8 +63,6 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 			// Initialize Masonry
 			this._msnry = new masonryConstructor(this._element.nativeElement, this.options);
 
-			// console.log('AngularMasonry:', 'Initialized');
-
 			// Bind to events
 			this._msnry.on('layoutComplete', (items: any) => {
 				this.layoutComplete.emit(items);
@@ -85,8 +83,6 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 		setTimeout(() => {
 			this._msnry.layout();
 		});
-
-		// console.log('AngularMasonry:', 'Layout');
 	}
 
 	// public add(element: HTMLElement, prepend: boolean = false) {
@@ -117,8 +113,6 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 			// layout if first item
 			if (isFirstItem) this.layout();
 		}
-
-		// console.log('AngularMasonry:', 'Brick added');
 	}
 
 	public remove(element: HTMLElement) {
@@ -127,7 +121,5 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 
 		// Layout items
 		this.layout();
-
-		// console.log('AngularMasonry:', 'Brick removed');
 	}
 }
