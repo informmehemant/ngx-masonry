@@ -132,3 +132,5 @@ Triggered after an item element has been removed.
 
 ## Demo
 This repository contains a working app using ngx-masonry as a child module, not as an npm package. You can go to the [demo respository](https://github.com/gethinoakes/ngx-masonry-demo) to view an app that uses it as an npm package.
+
+[View a live demo here](https://ngx-masonry-demo.herokuapp.com/)
