@@ -13,3 +13,5 @@ Thumbs.db
 !config.js
 *.map
 *.d.ts
+
+/e2e

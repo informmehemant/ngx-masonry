@@ -7,7 +7,7 @@ import {
 	ElementRef,
 	EventEmitter,
 	PLATFORM_ID,
-	Inject,
+	Inject
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -20,17 +20,17 @@ import { NgxMasonryOptions } from './ngx-masonry-options.interface';
 @Component({
 	selector: '[ngx-masonry], ngx-masonry',
 	template: '<ng-content></ng-content>',
-	styles: [`
+	styles: [
+		`
 		:host {
 			display: block;
 		}
-	`],
+	`
+	]
 })
 export class NgxMasonryComponent implements OnInit, OnDestroy {
-	constructor(
-		@Inject(PLATFORM_ID) private platformId: any,
-		private _element: ElementRef) {}
-	
+	constructor(@Inject(PLATFORM_ID) private platformId: any, private _element: ElementRef) {}
+
 	public _msnry: any;
 
 	// Inputs
@@ -42,14 +42,14 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 	@Output() removeComplete: EventEmitter<any[]> = new EventEmitter<any[]>();
 
 	ngOnInit() {
-    		///TODO: How to load imagesloaded only if this.useImagesLoaded===true?
-    		if (this.useImagesLoaded && imagesLoaded === undefined) {
-      			imagesLoaded = require('imagesloaded');
-    		}
+		///TODO: How to load imagesloaded only if this.useImagesLoaded===true?
+		if (this.useImagesLoaded && imagesLoaded === undefined) {
+			imagesLoaded = require('imagesloaded');
+		}
 
 		if (isPlatformBrowser(this.platformId) && masonryConstructor === undefined) {
-		      masonryConstructor = require('masonry-layout');
-	    	}
+			masonryConstructor = require('masonry-layout');
+		}
 
 		// Create masonry options object
 		if (!this.options) this.options = {};
@@ -59,7 +59,7 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 			this.options.itemSelector = '[ngx-masonry-item], ngx-masonry-item';
 		}
 
-		if (isPlatformBrowser(this.platformId)) {			
+		if (isPlatformBrowser(this.platformId)) {
 			// Initialize Masonry
 			this._msnry = new masonryConstructor(this._element.nativeElement, this.options);
 
