@@ -2,10 +2,6 @@
 node_modules
 npm-debug.log
 npm-debug.log*
-./dist/
-dist
-dist/package.json
-dist/README.md
 
 # OS generated files
 Thumbs.db
@@ -18,3 +14,4 @@ Thumbs.db
 *.d.ts
 
 /e2e
+/dist
