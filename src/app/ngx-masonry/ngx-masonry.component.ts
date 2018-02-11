@@ -85,6 +85,12 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	public reloadItems() {
+		setTimeout(() => {
+			this._msnry.reloadItems();
+		});
+	}
+
 	// public add(element: HTMLElement, prepend: boolean = false) {
 	public add(element: HTMLElement) {
 		var isFirstItem = false;
