@@ -11,4 +11,5 @@ export interface NgxMasonryOptions {
 	transitionDuration?: string;
 	resize?: boolean;
 	initLayout?: boolean;
+	horizontalOrder?: boolean;
 }

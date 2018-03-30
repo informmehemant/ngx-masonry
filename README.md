@@ -87,6 +87,7 @@ The `options`-attribute takes an object with the following properties:
 * transitionDuration: string;
 * resize: boolean;
 * initLayout: boolean;
+* horizontalOrder: boolean;
 
 #### Examples
 
